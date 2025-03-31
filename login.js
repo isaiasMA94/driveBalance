@@ -1,15 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     const formularioLogin = document.getElementById('formulario-login');
 
-    formularioLogin.addEventListener('submit', (event) => {
+    formularioLogin.addEventListener('submit', async (event) => {
         event.preventDefault();
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
-        // Aquí iría la lógica real de autenticación
-        // Por ahora, simulamos un inicio de sesión exitoso
-        console.log('Intento de inicio de sesión con:', { email, password });
-        alert('Inicio de sesión exitoso (simulado). Redirigiendo a la página de carga de combustible.');
-        window.location.href = 'combustible.html';
+        try {
+            const response = await fetch('http://localhost:3000/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            if (response.ok) {
+                alert('Inicio de sesión exitoso.');
+                window.location.href = 'combustible.html';
+            } else {
+                const data = await response.json();
+                alert('Error al iniciar sesión: ' + data.error);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Error al iniciar sesión.');
+        }
     });
 });
