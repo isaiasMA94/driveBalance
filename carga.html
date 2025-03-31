@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carga de Combustible - Registro y Seguimiento de Ganancias</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="combustible.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Registro de Carga de Combustible Inicial</h1>
+    </header>
+
+    <main>
+        <section id="registro-combustible">
+            <form id="formulario-combustible">
+                <div>
+                    <label for="combustible-inicio">¿Cargó combustible al inicio?</label>
+                    <input type="checkbox" id="combustible-inicio" name="combustible-inicio">
+                </div>
+                <div id="detalle-combustible" style="display: none;">
+                    <div>
+                        <label for="litros-inicio">Cantidad (litros):</label>
+                        <input type="number" id="litros-inicio" name="litros-inicio" step="0.01">
+                    </div>
+                    <div>
+                        <label for="monto-inicio">Monto ($):</label>
+                        <input type="number" id="monto-inicio" name="monto-inicio" step="0.01">
+                    </div>
+                </div>
+                <button type="submit">Continuar a la Jornada</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Registro de Ganancias para Conductores</p>
+    </footer>
+</body>
+</html>
